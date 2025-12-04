@@ -1,10 +1,3 @@
-Here is a **clean, professional, ready-to-publish `README.md`** for your GitHub repository of:
-
-**`hacksudo/63satsvulnbank` – Vulnerable Banking Application (PHP + MySQL)**
-
-Copy & paste directly into your repo.
-
----
 
 # 🏦 Vulnerable Banking Application — 63satsvulnbank
 
@@ -161,13 +154,3 @@ Made for the cybersecurity community by **Hacksudo**.
 If you like the project, ⭐ star the repository on GitHub!
 
 ---
-
-If you want, I can also generate:
-
-✔ A **smaller README**
-✔ A **CTF-style README**
-✔ A **screenshots section**
-✔ A **contribution guide**
-✔ A **changelog**
-
-Just tell me!
