@@ -21,7 +21,7 @@ INSERT INTO users (username, password, email) VALUES
 ('john', 'john123', 'john@example.com');
 
 /* ==========================================
-   ADMINS TABLE (ADMIN PANEL)
+   ADMINS
 ========================================== */
 CREATE TABLE IF NOT EXISTS admins (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -115,4 +115,14 @@ CREATE TABLE IF NOT EXISTS reset_tokens (
     expires_at DATETIME,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+/* ==========================================
+   CHAT LOGS (NEW)
+========================================== */
+CREATE TABLE IF NOT EXISTS chat_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    who VARCHAR(255),
+    message TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

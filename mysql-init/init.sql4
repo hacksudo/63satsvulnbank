@@ -58,9 +58,7 @@ CREATE TABLE IF NOT EXISTS transactions (
     to_id INT NOT NULL,
     amount DECIMAL(10,2),
     description VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (from_id) REFERENCES accounts(id),
-    FOREIGN KEY (to_id) REFERENCES accounts(id)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO transactions (from_id, to_id, amount, description) VALUES
