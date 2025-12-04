@@ -6,9 +6,6 @@ RUN a2enmod rewrite
 # Copy files
 COPY . /var/www/html/
 
-#Log access
-chmod 775 /var/log/auth.log
-
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 777 /var/www/html
