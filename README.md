@@ -26,7 +26,6 @@ This project simulates a real banking system packed with **multiple security vul
 * Weak session management
 * Session fixation
 * Missing rate-limit
-* CAPTCHA bypass
 * Insecure cookies
 
 ### 👤 User Account Vulnerabilities
