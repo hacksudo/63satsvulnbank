@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
     if ($res && mysqli_num_rows($res) > 0) {
         $row = mysqli_fetch_assoc($res);
         $_SESSION['admin_user'] = $row['username'];
-        header("Location: admin_dashboard.php");
+        header("Location: dashboard.php");
         exit;
     } else {
         $msg = "Invalid admin credentials.";
