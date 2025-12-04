@@ -74,7 +74,11 @@ This project simulates a real banking system packed with **multiple security vul
 with **docker-compose**:
 
 ```
-docker-compose up -d
+sudo apt install docker.io
+sudo apt install -y docker-compose
+git clone https://github.com/hacksudo/63satsvulnbank
+cd 63satsvulnbank
+sudo docker-compose up -d
 ```
 ### 📥 Pull the Image
 
