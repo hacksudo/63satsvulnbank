@@ -71,7 +71,11 @@ This project simulates a real banking system packed with **multiple security vul
 ---
 
 ## 🐳 Run Using Docker
+with **docker-compose**:
 
+```
+docker-compose up -d
+```
 ### 📥 Pull the Image
 
 ```
