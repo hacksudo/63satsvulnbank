@@ -43,7 +43,7 @@ $target_id = intval($_GET['uid'] ?? $user_id);
 
     <h1 class="text-xl font-semibold">Account Statement</h1>
 
-    <p class="mt-2 text-sm">Showing statement for User ID: <?php echo $target_id; ?> (IDOR vulnerable)</p>
+    <p class="mt-2 text-sm">Showing statement for User ID: <?php echo $target_id; ?> (Bank Statement)</p>
 
     <div class="mt-4 p-3 bg-gray-100 dark:bg-gray-700 rounded">
       <p class="text-lg font-medium">Current Balance:</p>
