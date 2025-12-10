@@ -8,13 +8,11 @@ RUN a2enmod rewrite
 
 # Copy project files into container
 COPY . /var/www/html/
-
-# Ensure uploads directory exists
-RUN mkdir -p /var/www/html/uploads
+#chown www-data:www-data -R /var/www/html/
 
 # access.log
 
 # Fix permissions for Apache/PHP (intentionally insecure for lab)
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 777 /var/www/html \
-    && chmod -R 777 /var/www/html/uploads
+RUN chown -R www-data:www-data /var/www/html 
+RUN chmod -R 777 /var/www/html 
+RUN chmod -R 777 /var/www/html/uploads

@@ -107,18 +107,18 @@ $current_page = basename($_SERVER['PHP_SELF']);
   </div>
 </header>
 
-<!-- STYLES FOR NAV -->
+<!-- STYLES -->
 <style>
 .nav-link {
     position: relative;
     padding-bottom: 4px;
-    color: #4b5563; /* gray-600 */
+    color: #4b5563;
 }
 .dark .nav-link {
-    color: #d1d5db; /* gray-300 */
+    color: #d1d5db;
 }
 .nav-link:hover {
-    color: #6366f1; /* indigo-500 */
+    color: #6366f1;
 }
 .nav-link::after {
     content: "";
@@ -140,7 +140,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
     width: 100%;
 }
 
-/* Mobile */
 .mobile-link {
     display: block;
     padding: 8px 0;
@@ -154,10 +153,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
 }
 </style>
 
-<!-- MOBILE MENU JS -->
 <script>
 document.getElementById("mobileMenuBtn").onclick = () => {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("hidden");
+    document.getElementById("mobileMenu").classList.toggle("hidden");
 };
 </script>

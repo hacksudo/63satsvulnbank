@@ -12,13 +12,14 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255),
+    phone VARCHAR(50),  -- 🔥 Added missing column
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO users (username, password, email) VALUES
-('alice', 'alice123', 'alice@example.com'),
-('bob', 'bob123', 'bob@example.com'),
-('john', 'john123', 'john@example.com');
+INSERT INTO users (username, password, email, phone) VALUES
+('alice', 'alice123', 'alice@example.com', '9876543210'),
+('bob', 'bob123', 'bob@example.com', '9123456780'),
+('john', 'john123', 'john@example.com', '9988776655');
 
 /* ==========================================
    ADMINS
@@ -118,7 +119,7 @@ CREATE TABLE IF NOT EXISTS reset_tokens (
 );
 
 /* ==========================================
-   CHAT LOGS (NEW)
+   CHAT LOGS
 ========================================== */
 CREATE TABLE IF NOT EXISTS chat_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
