@@ -1,0 +1,98 @@
+<?php
+// view_profile.php (SAFE VERSION)
+// This file ONLY displays the logged-in user's own profile.
+// No IDOR, no ability to view others.
+
+session_start();
+include("includes/db.php");
+include("includes/header.php");
+
+// Require login
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$username = $_SESSION['user'];
+
+// Look up the user securely
+$stmt = $conn->prepare("SELECT id, username, email, phone, created_at FROM users WHERE username = ? LIMIT 1");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$stmt->store_result();
+
+if ($stmt->num_rows !== 1) {
+    // account missing (unexpected)
+    $stmt->close();
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
+
+$stmt->bind_result($uid, $uname, $email, $phone, $created_at);
+$stmt->fetch();
+$stmt->close();
+?>
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  <title>My Profile - 63Sats Bank</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
+
+<div class="max-w-2xl mx-auto p-6">
+  <div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
+
+    <h1 class="text-2xl font-semibold mb-4">My Profile</h1>
+
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm text-gray-500 dark:text-gray-400">User ID</label>
+        <div class="mt-1 p-2 bg-gray-100 dark:bg-gray-700 rounded">
+          <?php echo htmlspecialchars($uid); ?>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-500 dark:text-gray-400">Username</label>
+        <div class="mt-1 p-2 bg-gray-100 dark:bg-gray-700 rounded">
+          <?php echo htmlspecialchars($uname); ?>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-500 dark:text-gray-400">Email</label>
+        <div class="mt-1 p-2 bg-gray-100 dark:bg-gray-700 rounded">
+          <?php echo htmlspecialchars($email); ?>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-500 dark:text-gray-400">Phone</label>
+        <div class="mt-1 p-2 bg-gray-100 dark:bg-gray-700 rounded">
+          <?php echo htmlspecialchars($phone ?: "Not set"); ?>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-500 dark:text-gray-400">Account Created</label>
+        <div class="mt-1 p-2 bg-gray-100 dark:bg-gray-700 rounded">
+          <?php echo htmlspecialchars($created_at); ?>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 flex justify-between">
+      <a href="dashboard.php" class="px-4 py-2 bg-gray-600 text-white rounded">Back</a>
+      <a href="edit_profile.php" class="px-4 py-2 bg-blue-600 text-white rounded">Edit Profile</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
