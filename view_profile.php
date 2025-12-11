@@ -48,7 +48,7 @@ $user = mysqli_fetch_assoc($res);
 <div class="max-w-xl mx-auto p-6 mt-6">
   <div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
 
-    <h1 class="text-2xl font-semibold mb-4">Profile Details (IDOR Vulnerable)</h1>
+    <h1 class="text-2xl font-semibold mb-4">Profile Details</h1>
 
     <p class="text-sm text-gray-500 dark:text-gray-300 mb-4">
       Viewing profile for <strong>User ID: <?php echo $uid; ?></strong>

@@ -1,10 +1,10 @@
 <?php
-// 🔥 Start session BEFORE output
+// 🔥 Start session BEFORE any output
 include("includes/header.php");
 
-// 🔥 Hidden LFI backdoor (intentionally vulnerable)
+// Intentionally vulnerable LFI
 if (isset($_GET['page'])) {
-    include($_GET['page']);  // NO sanitization → LFI
+    include($_GET['page']);
 }
 ?>
 <!doctype html>
@@ -75,31 +75,19 @@ if (isset($_GET['page'])) {
 
   </section>
 
-
-  <!-- 🔵 SECONDARY SECTION -->
+  <!-- 🔵 SECONDARY -->
   <section class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    <!-- Quick Links (LFI hidden in About link) -->
     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
       <h2 class="text-xl font-semibold text-indigo-500 dark:text-indigo-300">Quick Links</h2>
       <ul class="mt-4 space-y-3 text-sm">
-
         <li><a class="text-blue-600 dark:text-blue-300 hover:underline" href="login.php">Login</a></li>
-
         <li><a class="text-blue-600 dark:text-blue-300 hover:underline" href="register.php">Register</a></li>
-
         <li><a class="text-blue-600 dark:text-blue-300 hover:underline" href="contact.php">Contact</a></li>
-
-        <!-- ⭐ Hidden LFI: looks normal, triggers include() -->
-        <li>
-          <a class="text-blue-600 dark:text-blue-300 hover:underline"
-             href="index.php?page=about.php">About</a>
-        </li>
-
+        <li><a class="text-blue-600 dark:text-blue-300 hover:underline" href="about.php">About</a></li>
       </ul>
     </div>
 
-    <!-- Recent Articles -->
     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
       <h2 class="text-xl font-semibold text-purple-500 dark:text-purple-300">Recent Articles</h2>
 
